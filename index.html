@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handmade Bliss - Handmade Products</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d8659;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2d8659;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .nav-icons button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .nav-icons button:hover {
+            color: #2d8659;
+        }
+
+        .login-btn {
+            background-color: #2d8659;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #1f5e3f;
+        }
+
+        /* Hero Section - Full Screen Background */
+        .hero {
+        background-image: url('https://okanly.com/wp-content/uploads/2025/10/Egyptian-ceramics-hero-banner-1140x642.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        position: relative;
+        }
+
+
+        .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.3); /* important */
+        }
+
+
+
+        /* .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.78);
+            z-index: 1;
+        } */
+
+        .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 700px;
+        text-align: center;
+        
+        background: rgba(255, 255, 255, 0.75); /* transparent white */
+        padding: 3rem;
+        border-radius: 12px;
+        
+        backdrop-filter: blur(10px); /* glass effect */
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .hero-quote {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #2d8659;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1f5e3f;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(45, 134, 89, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 2px solid #2d8659;
+        }
+
+        .btn-secondary:hover {
+            background-color: #2d8659;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(45, 134, 89, 0.3);
+        }
+
+        /* Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            color: #2d8659;
+            font-size: 1.5rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #2d8659;
+            box-shadow: 0 0 5px rgba(45, 134, 89, 0.2);
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 38px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .form-buttons button {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .form-buttons .submit-btn {
+            background-color: #2d8659;
+            color: white;
+        }
+
+        .form-buttons .submit-btn:hover {
+            background-color: #1f5e3f;
+        }
+
+        .form-buttons .back-btn {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        .form-buttons .back-btn:hover {
+            background-color: #ccc;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Wishlist Modal */
+        .wishlist-modal .modal-content {
+            max-width: 500px;
+        }
+
+        .wishlist-empty {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        .wishlist-empty p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .wishlist-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .wishlist-item:last-child {
+            border-bottom: none;
+        }
+
+        .wishlist-item-name {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .wishlist-item-price {
+            color: #2d8659;
+            font-weight: 600;
+        }
+
+        .remove-wishlist {
+            background: none;
+            border: none;
+            color: #d9534f;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Modal */
+        .contact-modal .modal-content {
+            max-width: 500px;
+        }
+
+        .contact-info {
+            text-align: left;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-item h3 {
+            color: #2d8659;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #2d8659;
+            background: none;
+            color: #2d8659;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #2d8659;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #2d8659;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                margin-left: 0;
+                gap: 1rem;
+                font-size: 0.85rem;
+                order: 3;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-right {
+                margin-left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-quote {
+                font-size: 1rem;
+            }
+
+            .hero-content {
+                padding: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 20% auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                font-size: 0.8rem;
+                gap: 0.5rem;
+            }
+
+            .nav-icons {
+                gap: 0.8rem;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-quote {
+                font-size: 0.95rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+
+            .modal-content {
+                margin: 30% auto;
+                padding: 1.5rem;
+            }
+
+            .modal-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .form-group input {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <nav>
+            <div class="logo">🏠 Handmade Bliss</div>
+            <ul class="nav-links">
+                <li><a href="#home">Discovery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact us</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="nav-icons">
+                    <button onclick="openSearch()" title="Profile">👤</button>
+                    <button onclick="openWishlist()" title="Wishlist">❤️</button>
+                    <button onclick="openCart()" title="Cart">🛒</button>
+                </div>
+                <button class="login-btn" onclick="openLoginModal()">Login</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>The Art of Handmade Living</h2>
+            <p class="hero-quote">
+                Discover unique, authentic handmade products crafted with love and care.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="shopNow()">Discovery our collection</button>
+                <button class="btn btn-secondary" onclick="openContactModal()">📞 Contact Seller</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="loginTitle">Sign In</h2>
+                <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+            </div>
+
+            <!-- Step 1: Email/Phone -->
+            <div id="step1" class="tab-content active">
+                <div class="form-group">
+                    <label>Email or Phone Number</label>
+                    <input type="text" id="emailPhone" placeholder="Enter your email or phone number">
+                </div>
+                <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="nextStep()">
+                    Continue
+                </button>
+            </div>
+
+            <!-- Step 2: Password -->
+            <div id="step2" class="tab-content">
+                <div class="form-group">
+                    <label>Email or Phone</label>
+                    <input type="text" id="emailPhoneDisplay" readonly style="background-color: #f5f5f5;">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Enter your password">
+                        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button class="back-btn" onclick="backStep()">← Back</button>
+                    <button class="submit-btn" onclick="login()">Sign In</button>
+                </div>
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                    Don't have an account? <a href="#" style="color: #2d8659; font-weight: 600;">Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlistModal" class="modal contact-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My Wishlist</h2>
+                <button class="close-btn" onclick="closeWishlist()">&times;</button>
+            </div>
+
+            <div id="wishlistContent">
+                <div class="wishlist-empty">
+                    <p>❤️ Your wishlist is empty</p>
+                    <p style="font-size: 0.95rem; color: #999;">Start adding your favorite products!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal contact-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Contact Seller</h2>
+                <button class="close-btn" onclick="closeContactModal()">&times;</button>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📞 Phone</h3>
+                    <p>+91-9876543210</p>
+                    <p>+91-8765432109</p>
+                    <div class="contact-buttons">
+                        <button class="contact-btn" onclick="call('+91-9876543210')">Call</button>
+                        <button class="contact-btn" onclick="whatsapp('+91-9876543210')">WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <p>hello@handmadebliss.com</p>
+                    <p>support@handmadebliss.com</p>
+                    <div class="contact-buttons">
+                        <button class="contact-btn" onclick="sendEmail('hello@handmadebliss.com')">Send Email</button>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📍 Address</h3>
+                    <p>Handmade Bliss Studio</p>
+                    <p>New Delhi, India</p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>⏰ Working Hours</h3>
+                    <p>Monday - Friday: 10:00 AM - 6:00 PM</p>
+                    <p>Saturday: 11:00 AM - 5:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Handmade Bliss. All rights reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms & Conditions</a> | 
+            <a href="#">About Us</a>
+        </p>
+    </footer>
+
+    <script>
+        let wishlistItems = [];
+
+        // Login Modal Functions
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+            resetLoginForm();
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            resetLoginForm();
+        }
+
+        function resetLoginForm() {
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('emailPhone').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('loginTitle').textContent = 'Sign In';
+        }
+
+        function nextStep() {
+            const emailPhone = document.getElementById('emailPhone').value.trim();
+            
+            if (!emailPhone) {
+                alert('Please enter your email or phone number');
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailPhone) && !/^\d{10}$/.test(emailPhone.replace(/[^\d]/g, ''))) {
+                alert('Please enter a valid email or phone number');
+                return;
+            }
+
+            document.getElementById('emailPhoneDisplay').value = emailPhone;
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+            document.getElementById('loginTitle').textContent = 'Enter Password';
+        }
+
+        function backStep() {
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('loginTitle').textContent = 'Sign In';
+        }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = document.querySelector('.toggle-password');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        }
+
+        function login() {
+            const password = document.getElementById('password').value;
+            
+            if (!password) {
+                alert('Please enter your password');
+                return;
+            }
+
+            alert('Login successful! Welcome to Handmade Bliss 🎉');
+            closeLoginModal();
+        }
+
+        // Wishlist Functions
+        function openWishlist() {
+            document.getElementById('wishlistModal').style.display = 'block';
+        }
+
+        function closeWishlist() {
+            document.getElementById('wishlistModal').style.display = 'none';
+        }
+
+        function addToWishlist(productName, price) {
+            wishlistItems.push({ name: productName, price: price });
+            updateWishlistDisplay();
+            alert(productName + ' added to wishlist! ❤️');
+        }
+
+        function removeFromWishlist(index) {
+            wishlistItems.splice(index, 1);
+            updateWishlistDisplay();
+        }
+
+        function updateWishlistDisplay() {
+            const wishlistContent = document.getElementById('wishlistContent');
+            
+            if (wishlistItems.length === 0) {
+                wishlistContent.innerHTML = `
+                    <div class="wishlist-empty">
+                        <p>❤️ Your wishlist is empty</p>
+                        <p style="font-size: 0.95rem; color: #999;">Start adding your favorite products!</p>
+                    </div>
+                `;
+            } else {
+                let html = '';
+                wishlistItems.forEach((item, index) => {
+                    html += `
+                        <div class="wishlist-item">
+                            <div>
+                                <div class="wishlist-item-name">${item.name}</div>
+                                <div class="wishlist-item-price">₹${item.price}</div>
+                            </div>
+                            <button class="remove-wishlist" onclick="removeFromWishlist(${index})">✕</button>
+                        </div>
+                    `;
+                });
+                wishlistContent.innerHTML = html;
+            }
+        }
+
+        // Contact Modal Functions
+        function openContactModal() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        function call(number) {
+            window.location.href = `tel:${number}`;
+        }
+
+        function whatsapp(number) {
+            const cleanNumber = number.replace(/[^\d]/g, '');
+            window.open(`https://wa.me/${cleanNumber}`, '_blank');
+        }
+
+        function sendEmail(email) {
+            window.location.href = `mailto:${email}`;
+        }
+
+        // Navigation Functions
+        function shopNow() {
+            alert('Redirecting to products page...');
+            // window.location.href = 'products.html';
+        }
+
+        function openSearch() {
+            alert('Profile functionality coming soon!');
+        }
+
+        function openCart() {
+            alert('Cart is empty');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const wishlistModal = document.getElementById('wishlistModal');
+            const contactModal = document.getElementById('contactModal');
+            
+            if (event.target === loginModal) {
+                closeLoginModal();
+            }
+            if (event.target === wishlistModal) {
+                closeWishlist();
+            }
+            if (event.target === contactModal) {
+                closeContactModal();
+            }
+        }
+    </script>
+</body>
+</html>
