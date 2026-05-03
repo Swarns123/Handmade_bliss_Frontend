@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candleaf - Product Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 30px;
+            font-weight: 600;
+            color: #ae2727;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #27ae60;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #27ae60;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 20px;
+        }
+
+        .header-icons a {
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .header-icons a:hover {
+            color: #ae4627;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        /* Product Image Section */
+        .product-image-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .product-image {
+            background: #f5f5f5;
+            padding: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-description-text {
+            text-align: center;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .shipping-badge {
+            text-align: center;
+            color: #ae2727;
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Product Details Section */
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .product-header {
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        .product-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333333;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 28px;
+            color: #ae5227;
+            font-weight: 700;
+        }
+
+        .purchase-options {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .purchase-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .purchase-option:hover {
+            border-color: #ae6427;
+        }
+
+        .purchase-option input[type="radio"] {
+            cursor: pointer;
+        }
+
+        .purchase-option label {
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .quantity-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quantity-label {
+            font-weight: 600;
+            color: #333333;
+        }
+
+        .quantity-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: fit-content;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 8px 12px;
+        }
+
+        .quantity-input button {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #ae5427;
+            font-weight: 700;
+            transition: transform 0.2s;
+        }
+
+        .quantity-input button:hover {
+            transform: scale(1.2);
+        }
+
+        .quantity-input input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .subscription-section {
+            background: #f0f8f4;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ae2729;
+        }
+
+        .subscription-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ae2727;
+        }
+
+        .subscription-title::before {
+            content: "✓";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #2bae27;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+        }
+
+        .subscription-text {
+            font-size: 13px;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        .subscription-text a {
+            color: #27ae61;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .subscription-frequency {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .frequency-select {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .add-to-cart-btn {
+            background: #ae2727;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #229954;
+            transform: scale(1.02);
+        }
+
+        .add-to-cart-btn::before {
+            content: "🛒";
+            font-size: 18px;
+        }
+
+        /* Product Specs */
+        .product-specs {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .spec-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: #333;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .spec-value {
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c2c2c;
+            color: #fff;
+            padding: 50px;
+            margin-top: 80px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #444;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #27ae60;
+        }
+
+        .footer-brand-name {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .footer-description {
+            color: #aaa;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .footer-column h3 {
+            color: #27ae60;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #27ae60;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 20px;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .product-specs {
+                grid-template-columns: 1fr;
+            }
+
+            .product-title {
+                font-size: 24px;
+            }
+
+            .product-image {
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">
+            <div class="logo-icon">🎁</div>
+            <span>Handmade Bliss</span>
+        </div>
+        <nav>
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact us</a>
+        </nav>
+        <div class="header-icons">
+            <a href="#account">👤</a>
+            <a href="#cart">🛒</a>
+        </div>
+</header>
+
+<hr>
+
+<!-- Main Product Section -->
+    <div class="container">
+        <!-- Left: Product Image -->
+        <div class="product-image-section">
+            <div class="product-image">
+                <img src="https://diybaazar.com/publicuploads/seller/products/mini-lippanart-wallhanging-1-0_1733293292.jpg" alt="Product Image">
+            </div>
+            <p class="product-description-text">
+                All handcrafted with love, Handmade Bliss is made for your special moments and wellness.
+            </p>
+            <p class="shipping-badge">🚚 FREE SHIPPING</p>
+        </div>
+
+        <!-- Right: Product Details -->
+        <div class="product-details">
+            <div class="product-header">
+                <h1 class="product-title">Premium Handmade Artisan Product</h1>
+                <p class="product-price">₹299</p>
+            </div>
+            <!-- Purchase Option -->
+
+            <div class="purchase-options">
+                <label class="purchase-option">
+                    <input type="radio" name="purchase" checked>
+                    <label for="">One time purchase</label>
+                </label>
+            </div>
+
+            <!-- Subscription -->
+            <div>
+                <label>
+                    <input type="radio" name="purchase">
+                    Subscribe and delivery every
+                </label>
+
+                <select>
+                    <option>4 weeks</option>
+                    <option>8 weeks</option>
+                    <option>12 weeks</option>
+                </select>
+
+                <p>
+                    Subscribe now and get 10% discount on every recurring order.
+                    The discount will be applied at checkout.
+                    <a href="#">See details</a>
+                </p>
+            </div>
+
+            <!-- Quantity -->
+            <div class="quantity-section">
+                <label class="quantity-label">Quantity</label>
+                <div class="quantity-input">
+                    <button onclick="decreaseQuantity()">−</button>
+                    <input type="number" id="quantity" value="1" min="1" readonly>
+                    <button onclick="increaseQuantity()">+</button>
+                </div>
+            </div>
+
+            <!-- Add to Cart -->
+            <button class="add-to-cart-btn">+Add to cart</button>
+
+            <!-- Product Info -->
+            <!-- Product Specifications -->
+            <div class="product-specs">
+                <div class="spec-item">
+                    <div class="spec-label">Material</div>
+                    <div class="spec-value">Wood, clay, fabric, or mixed artisan materials</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Usage</div>
+                    <div class="spec-value">Home decor, gifting, or personal use</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Style</div>
+                    <div class="spec-value">Traditional & contemporary handcrafted design</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Dimensions</div>
+                    <div class="spec-value">Varies by product</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Weight</div>
+                    <div class="spec-value">Lightweight & durable</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Handmade</div>
+                    <div class="spec-value">100% Artisan Crafted</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand">
+                    <div class="footer-logo-icon">🎁</div>
+                    <div class="footer-brand-name">Handmade Bliss</div>
+                </div>
+                <p class="footer-description">
+                    Your handcrafted products made for your home and for your wellness.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#">New arrivals</a></li>
+                    <li><a href="#">Best sellers</a></li>
+                    <li><a href="#">All products</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="#">Our story</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Info</h3>
+                <ul>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        }
+
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        }
+
+        // Add to cart functionality
+        document.querySelector('.add-to-cart-btn').addEventListener('click', function() {
+            const quantity = document.getElementById('quantity').value;
+            alert(`Added ${quantity} item(s) to cart!`);
+        });
+    </script>
+</body>
+</html>
+
