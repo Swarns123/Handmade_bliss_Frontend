@@ -11,156 +11,145 @@
             box-sizing: border-box;
         }
 
-        body {
-        font-family: 'Poppins', sans-serif;
-        line-height: 1.6;
-        color: #333;
+         body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        color: #333333;
         }
 
+        header {
+        background: white;
+        padding: 5px 25px;
+        }
+
+        
         /* Header and Navigation */
         header {
             background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #f0f0f0;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 4px rgba(230,70,70,0.1);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2d8659;
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: #ae2727;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            white-space: nowrap;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2.5rem;
-            margin-left: 2rem;
+            flex: 1;
+            justify-content: center;
+            margin: 0 2rem;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #333;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.875rem;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: #2d8659;
+            color: #ae2727;
         }
 
         .nav-right {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             align-items: center;
-            margin-left: auto;
+            white-space: nowrap;
         }
 
         .nav-icons {
             display: flex;
-            gap: 1.2rem;
+            gap: 0.3rem;
+            font-size: 0.938rem;
         }
 
         .nav-icons button {
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 1.3rem;
-            color: #333;
+            font-size: 1.25rem;
+            color: #666;
             transition: color 0.3s;
+            padding: 0.3rem 0.5rem;
         }
 
         .nav-icons button:hover {
-            color: #2d8659;
+            color: #ae2727;
         }
 
         .login-btn {
-            background-color: #2d8659;
+            background-color: #ae2727;
             color: white;
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: background-color 0.3s;
         }
 
         .login-btn:hover {
-            background-color: #1f5e3f;
+            background-color: #ae2727;
         }
 
         /* Hero Section - Full Screen Background */
         .hero {
-        background-image: url('https://okanly.com/wp-content/uploads/2025/10/Egyptian-ceramics-hero-banner-1140x642.jpeg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-        position: relative;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.20)), url('https://thumbs.dreamstime.com/b/handcraft-souvenirs-19014684.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
         }
-
-
-        .hero::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 255, 255, 0.3); /* important */
-        }
-
-
-
-        /* .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.78);
-            z-index: 1;
-        } */
 
         .hero-content {
-        position: relative;
-        z-index: 2;
-        max-width: 700px;
-        text-align: center;
-        
-        background: rgba(255, 255, 255, 0.75); /* transparent white */
-        padding: 3rem;
-        border-radius: 12px;
-        
-        backdrop-filter: blur(10px); /* glass effect */
-        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 700px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 3.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
-
 
         .hero h1 {
             font-size: 2.8rem;
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 600;
             color: #2c3e50;
         }
 
         .hero-quote {
             font-size: 1.05rem;
-            color: #555;
+            color: #666;
             margin-bottom: 2.5rem;
             line-height: 1.8;
             font-weight: 400;
@@ -168,16 +157,16 @@
 
         .hero-buttons {
             display: flex;
-            gap: 1.2rem;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
-            font-size: 1rem;
+            padding: 0.9rem 2rem;
+            font-size: 0.95rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 600;
@@ -186,27 +175,27 @@
         }
 
         .btn-primary {
-            background-color: #2d8659;
+            background-color: #ae2727;
             color: white;
         }
 
         .btn-primary:hover {
-            background-color: #1f5e3f;
+            background-color: #ae2727;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(45, 134, 89, 0.3);
+            box-shadow: 0 8px 20px rgba(193, 54, 47, 0.3);
         }
 
         .btn-secondary {
-            background-color: #f0f0f0;
-            color: #333;
-            border: 2px solid #2d8659;
+            background-color: #fff;
+            color: #ae2727;
+            border: 2px solid #ae2727;
         }
 
         .btn-secondary:hover {
-            background-color: #2d8659;
+            background-color: #ae2727;
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(45, 134, 89, 0.3);
+            box-shadow: 0 8px 20px rgba(193, 54, 47, 0.3);
         }
 
         /* Login Modal */
@@ -231,7 +220,7 @@
             background-color: #fff;
             margin: 5% auto;
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 8px;
             width: 90%;
             max-width: 400px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
@@ -251,8 +240,8 @@
         }
 
         .modal-header h2 {
-            color: #2d8659;
-            font-size: 1.5rem;
+            color: #ae2727;
+            font-size: 1.4rem;
         }
 
         .close-btn {
@@ -276,21 +265,22 @@
             margin-bottom: 0.5rem;
             color: #333;
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .form-group input {
             width: 100%;
             padding: 0.8rem;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
             transition: border-color 0.3s;
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: #2d8659;
-            box-shadow: 0 0 5px rgba(45, 134, 89, 0.2);
+            border-color: #ae2727;
+            box-shadow: 0 0 5px rgba(174, 39, 39, 0.2);
         }
 
         .password-container {
@@ -315,28 +305,28 @@
             flex: 1;
             padding: 0.8rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
         }
 
         .form-buttons .submit-btn {
-            background-color: #2d8659;
+            background-color: #ae2727;
             color: white;
         }
 
         .form-buttons .submit-btn:hover {
-            background-color: #1f5e3f;
+            background-color: #ae2727;
         }
 
         .form-buttons .back-btn {
-            background-color: #ddd;
+            background-color: #e0e0e0;
             color: #333;
         }
 
         .form-buttons .back-btn:hover {
-            background-color: #ccc;
+            background-color: #d0d0d0;
         }
 
         .tab-content {
@@ -359,8 +349,8 @@
         }
 
         .wishlist-empty p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .wishlist-item {
@@ -381,14 +371,15 @@
         }
 
         .wishlist-item-price {
-            color: #2d8659;
+            color: #ae2727;
             font-weight: 600;
+            margin-top: 0.3rem;
         }
 
         .remove-wishlist {
             background: none;
             border: none;
-            color: #d9534f;
+            color: #ae2727;
             cursor: pointer;
             font-size: 1.2rem;
         }
@@ -413,36 +404,38 @@
         }
 
         .contact-item h3 {
-            color: #2d8659;
+            color: #ae2727;
             margin-bottom: 0.5rem;
+            font-size: 1rem;
         }
 
         .contact-item p {
             color: #666;
             margin-bottom: 0.3rem;
+            font-size: 0.95rem;
         }
 
         .contact-buttons {
             display: flex;
             gap: 0.5rem;
-            margin-top: 1rem;
+            margin-top: 0.8rem;
             flex-wrap: wrap;
         }
 
         .contact-btn {
             padding: 0.5rem 1rem;
-            border: 1px solid #2d8659;
+            border: 1px solid #ae2727;
             background: none;
-            color: #2d8659;
-            border-radius: 5px;
+            color: #ae2727;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             transition: all 0.3s;
         }
 
         .contact-btn:hover {
-            background-color: #2d8659;
+            background-color: #ae2727;
             color: #fff;
         }
 
@@ -450,16 +443,17 @@
         footer {
             background-color: #333;
             color: #fff;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
+            font-size: 0.9rem;
         }
 
         footer p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         footer a {
-            color: #2d8659;
+            color: #c5972c;
             text-decoration: none;
         }
 
@@ -471,20 +465,38 @@
         @media (max-width: 768px) {
             nav {
                 flex-wrap: wrap;
-                gap: 1rem;
+                padding: 0.6rem 1rem;
+                gap: 0.6rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
             }
 
             .nav-links {
-                margin-left: 0;
-                gap: 1rem;
+                gap: 1.5rem;
                 font-size: 0.85rem;
+                margin: 0 1rem;
                 order: 3;
                 width: 100%;
                 justify-content: center;
             }
 
             .nav-right {
-                margin-left: 0;
+                gap: 0.8rem;
+            }
+
+            .nav-icons {
+                gap: 0.8rem;
+            }
+
+            .nav-icons button {
+                font-size: 1rem;
+            }
+
+            .login-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
             }
 
             .hero h1 {
@@ -516,17 +528,32 @@
         }
 
         @media (max-width: 480px) {
+            nav {
+                padding: 0.6rem 0.8rem;
+            }
+
             .logo {
-                font-size: 1.2rem;
+                font-size: 0.95rem;
             }
 
             .nav-links {
-                font-size: 0.8rem;
-                gap: 0.5rem;
+                font-size: 0.75rem;
+                gap: 1rem;
+                margin: 0 0.5rem;
             }
 
             .nav-icons {
-                gap: 0.8rem;
+                gap: 0.6rem;
+            }
+
+            .nav-icons button {
+                font-size: 0.95rem;
+                padding: 0.2rem 0.3rem;
+            }
+
+            .login-btn {
+                padding: 0.4rem 0.7rem;
+                font-size: 0.75rem;
             }
 
             .hero {
@@ -565,7 +592,17 @@
     <!-- Header and Navigation -->
     <header>
         <nav>
-            <div class="logo">🏠 Handmade Bliss</div>
+            <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 100 100">
+            <!-- Circle -->
+            <circle cx="50" cy="50" r="45" stroke="#8B4513" stroke-width="6" fill="#fff8f0"/>
+            
+            <!-- Handmade Icon -->
+            <text x="50%" y="55%" text-anchor="middle" font-size="50">🧵</text>
+        </svg>
+        <span>Handmade Bliss</span>
+    </div>
+
             <ul class="nav-links">
                 <li><a href="#home">Discovery</a></li>
                 <li><a href="#about">About</a></li>
@@ -581,6 +618,9 @@
             </div>
         </nav>
     </header>
+
+
+
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -632,8 +672,8 @@
                     <button class="back-btn" onclick="backStep()">← Back</button>
                     <button class="submit-btn" onclick="login()">Sign In</button>
                 </div>
-                <p style="text-align: center; margin-top: 1rem; color: #666; font-size: 0.9rem;">
-                    Don't have an account? <a href="#" style="color: #2d8659; font-weight: 600;">Sign Up</a>
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-size: 0.85rem;">
+                    Don't have an account? <a href="#" style="color: #c1362f; font-weight: 600;">Sign Up</a>
                 </p>
             </div>
         </div>
@@ -650,7 +690,7 @@
             <div id="wishlistContent">
                 <div class="wishlist-empty">
                     <p>❤️ Your wishlist is empty</p>
-                    <p style="font-size: 0.95rem; color: #999;">Start adding your favorite products!</p>
+                    <p style="font-size: 0.9rem; color: #999;">Start adding your favorite products!</p>
                 </div>
             </div>
         </div>
@@ -677,16 +717,16 @@
 
                 <div class="contact-item">
                     <h3>📧 Email</h3>
-                    <p>hello@handmadebliss.com</p>
-                    <p>support@handmadebliss.com</p>
+                    <p>hello@homemadebliss.com</p>
+                    <p>support@homemadebliss.com</p>
                     <div class="contact-buttons">
-                        <button class="contact-btn" onclick="sendEmail('hello@handmadebliss.com')">Send Email</button>
+                        <button class="contact-btn" onclick="sendEmail('hello@homemadebliss.com')">Send Email</button>
                     </div>
                 </div>
 
                 <div class="contact-item">
                     <h3>📍 Address</h3>
-                    <p>Handmade Bliss Studio</p>
+                    <p>Homemade Bliss Studio</p>
                     <p>New Delhi, India</p>
                 </div>
 
@@ -809,7 +849,7 @@
                 wishlistContent.innerHTML = `
                     <div class="wishlist-empty">
                         <p>❤️ Your wishlist is empty</p>
-                        <p style="font-size: 0.95rem; color: #999;">Start adding your favorite products!</p>
+                        <p style="font-size: 0.9rem; color: #999;">Start adding your favorite products!</p>
                     </div>
                 `;
             } else {
